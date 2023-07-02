@@ -1,0 +1,56 @@
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #202020;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+#navbar h2 a {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+#navbar form {
+  display: flex;
+  gap: .5rem;
+}
+
+#navbar form input {
+  padding: .2rem .8rem;
+  color: #181818;
+  font-weight: bold;
+  border-radius: .4rem;
+  border: none;
+  outline: none;
+  border-bottom: .15rem solid transparent;
+  transition: .3s ease-in-out;
+}
+
+#navbar form input:focus {
+  border-bottom-color: #777;
+}
+
+#navbar form button {
+  background-color: #999;
+  border: .15rem solid #999;
+  border-radius: .4rem;
+  color: #181818;
+  padding: .3rem;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+#navbar form button:hover {
+  background-color: #777;
+  border-color: #777;
+}

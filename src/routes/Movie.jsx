@@ -1,7 +1,75 @@
+import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
+import {
+  BsGraphUp,
+  BsWallet2,
+  BsHourglassSplit,
+  BsFillFileEarmarkTextFill
+} from "react-icons/bs"
+
+import MovieCard from "../components/MovieCard"
+
+import style from "./Movie.module.css"
+
+const moviesUrl = import.meta.env.VITE_API;
+const apiKey = import.meta.env.VITE_API_KEY;
+
 const Movie = () => {
+  const {id} = useParams();
+  const [movie, setMovie] = useState(null);
+
+  const getMovie = async (url) => {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    console.log(data);
+    setMovie(data);
+  }
+
+  const formatCurrency = (number) => {
+    return number.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    })
+  }
+
+  useEffect(()=> {
+    const movieUrl = `${moviesUrl}${id}?${apiKey}`
+    getMovie(movieUrl);
+  }, [])
+
   return (
-    <div>
-      
+    <div className={style.movie_page}>
+      {movie && 
+      <>
+        <MovieCard  movie ={movie} showLink={false}/>
+        <p className={style.tagline}>{movie.tagline}</p>
+        <div className={style.info}>
+          <h3>
+            <BsWallet2 /> Budget:
+          </h3>
+          <p>{formatCurrency(movie.budget)}</p>
+        </div>
+        <div className={style.info}>
+          <h3>
+            <BsGraphUp /> Revenue:
+          </h3>
+          <p>{formatCurrency(movie.revenue)}</p>
+        </div>
+        <div className={style.info}>
+          <h3>
+            <BsHourglassSplit /> Duration:
+          </h3>
+          <p>{movie.runtime} min</p>
+        </div>
+        <div className={style.info} id={style.description}>
+          <h3>
+            <BsFillFileEarmarkTextFill /> Description:
+          </h3>
+          <p>{movie.overview}</p>
+        </div>
+      </>
+      } 
     </div>
   )
 }

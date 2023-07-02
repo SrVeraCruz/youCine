@@ -1,0 +1,25 @@
+.container .title {
+  color: #fff;
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 2rem 0 1rem;
+}
+
+.title .query_text {
+  color: #e10000;
+}
+
+.movies_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.5rem;
+  max-width: 75rem;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+.movies_container div{
+  flex: 1 1 20rem;
+  max-width: 22rem;
+  margin: auto;
+}
